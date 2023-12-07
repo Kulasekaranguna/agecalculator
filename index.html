@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-------------
+Devloped & Designed 
+by KULASEKARAN....
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(5, 2, 32);
+        height: 100vh;
+      }
+      .container {
+        width: 60%;
+        min-height: 80%;
+        background: rgb(64, 66, 160);
+        margin: 50px auto;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 0 28px rgb(76, 0, 255);
+      }
+      .container h1 {
+        text-align: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-weight: bolder;
+        margin: 20px;
+        color: white;
+        font-size: 40px;
+        text-shadow: 0 0 9px rgb(76, 0, 255), 0 0 19px rgb(76, 0, 255),
+          0 0 19px rgb(76, 0, 255);
+      }
+      .container label {
+        margin: 0;
+        margin: 15%;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .container input {
+        margin: 0;
+        margin-top: 20px;
+        margin-left: 24%;
+        padding: 15px;
+        width: 320px;
+        border: 2px solid rgb(68, 0, 255);
+        border-radius: 15px 0 0 15px;
+        user-select: none;
+      }
+      .container button {
+        margin: 0;
+        padding: 15px;
+        background-color: rgb(68, 0, 255);
+        width: 120px;
+        border-radius: 0 15px 15px 0;
+        border: 2px solid rgb(255, 255, 255);
+        color: white;
+      }
+      #result {
+        width: 90%;
+        min-height: 220px;
+        margin: 20px auto;
+        background-color: rgba(68, 0, 255, 0.781);
+        border-radius: 20px;
+        padding: 20px;
+        padding-left:10% ;
+        box-shadow: 0 0 10px rgb(159, 138, 218);
+      }
+      #result p {
+        margin: 10px;
+        color: white;
+      }
+      #year{
+        font-size: larger;
+      }
+      
+@media screen and (max-width:600px){
+    body{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .container {
+        width: 90%;
+        min-height: 80%;
+    
+      }
+      .container h1 {
+       
+        font-size: 30px;
+        
+      }
+      .container label {
+        margin-left: 4%;
+        font-size: 15px;
+      }
+      .container input {
+        margin: 0;
+        margin-top: 20px;
+        margin-left: 5%;
+        padding: 9px;
+        width: 150px;
+        border: 2px solid rgb(68, 0, 255);
+        border-radius: 15px 0 0 15px;
+        user-select: none;
+      }
+      .container button {
+        margin: 0;
+        padding: 9px;
+        background-color: rgb(68, 0, 255);
+        width: 85px;
+        border-radius: 0 15px 15px 0;
+        border: 2px solid rgb(255, 255, 255);
+        color: white;
+      }
+      #result {
+        width: 90%;
+        min-height: 220px;
+        margin: 20px auto;
+        background-color: rgba(68, 0, 255, 0.781);
+        border-radius: 20px;
+        padding: 20px;
+        padding-left:10% ;
+        box-shadow: 0 0 10px rgb(159, 138, 218);
+      }
+      #result p {
+        margin: 10px;
+        color: white;
+      }
+      #year{
+        font-size: larger;
+      }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Age Calculator</h1>
+      <label for="">Enter your DOB:</label><br />
+      <input type="datetime-local" id="dob" />
+      <button onclick="calcu()">Culculate</button>
+      <div id="result">
+        <p id="year"></p>
+        <p id="desc"></p>
+        <p id="month"></p>
+        <p id="week"></p>
+        <p id="day"></p>
+        <p id="hour"></p>
+        <p id="min"></p>
+        <p id="sec"></p>
+      </div>
+    </div>
+    <script>
+      function calcu() {
+        let descd = document.getElementById("desc");
+        let yeard = document.getElementById("year");
+        let monthd = document.getElementById("month");
+        let weekd = document.getElementById("week");
+        let dayd = document.getElementById("day");
+        let hourd = document.getElementById("hour");
+        let mind = document.getElementById("min");
+        let secd = document.getElementById("sec");
+        let dob = document.getElementById("dob").value;
+        let yourday = new Date(dob);
+        let time = yourday.getTime();
+        let today = new Date();
+        let timenow = today.getTime();
+        let cal = timenow - time;
+        let year = Math.floor(cal / (1000 * 60 * 60 * 24 * 365.25));
+        let month = Math.floor(cal / (1000 * 60 * 60 * 24 * 30.4375));
+        let week = Math.floor(cal / (1000 * 60 * 60 * 24 * 7));
+        let day = Math.floor(cal / (1000 * 60 * 60 * 24));
+        let hour = Math.floor(cal / (1000 * 60 * 60));
+        let min = Math.floor(cal / (1000 * 60));
+        let sec = Math.floor(cal / 1000);
+        yeard.innerHTML = "You are "+year + "  " + "Years old";
+        descd.innerHTML = "Exact age in different units: ";
+        monthd.innerHTML = month + "  " + "Months";
+        weekd.innerHTML = week +  "  " + "Weeks";
+        dayd.innerHTML = day + "  " + "days";
+        hourd.innerHTML = hour + "  " + "Hours";
+        mind.innerHTML = min + "  " + "Minutes";
+        secd.innerHTML = sec + "  " + "Seconds";
+      }
+    </script>
+  </body>
+</html>
